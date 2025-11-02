@@ -15,6 +15,8 @@ class PermutationDecryption:
         self.best_permutation = self.current_permutation
         self.best_score = self.ngram_score.score(self.permutate_message(self.best_permutation))
 
+        self.print_best_message()
+
     def permutate_message(self, permutation):
 
         table = str.maketrans(self.alphabet, permutation)
@@ -66,13 +68,7 @@ class PermutationDecryption:
 
                 count += 1
 
-                print()
-                print("------")
-                print(self.permutate_message(self.best_permutation))
-                print(self.best_score)
-                print("Permutation: " + self.best_permutation)
-                print("------")
-                print()
+                self.print_best_message()
 
 
             else:
@@ -110,6 +106,16 @@ class PermutationDecryption:
         # Build permutation string: position of letter A = mapping['A'], etc.
         permutation = ''.join(mapping[c] for c in ALPHABET)
         return permutation
+    
+    def print_best_message(self):
+
+        print()
+        print("------")
+        print(self.permutate_message(self.best_permutation))
+        print(self.best_score)
+        print("Permutation: " + self.best_permutation)
+        print("------")
+        print()
 
 
 
