@@ -81,35 +81,6 @@ class PermutationDecryption:
                 random.shuffle(char_list)
                 self.current_permutation = "".join(char_list)
 
-
-    def initialize_permutation(self):
-
-        letterFrequency = "ETAOINSHRDLCUMWFGYPBVKJXQZ"
-        count = {}
-        message = self.message
-        permutation = self.alphabet
-        
-        for i in range(0, len(message)):
-
-            if(message[i] in self.alphabet):
-
-                if(message[i] in count):
-
-                    count[message[i]] += 1
-
-                else:
-
-                    count[message[i]] = 0
-
-        sorted_count = sorted(count.items(), key=lambda item: item[1], reverse=True)
-
-        for i in range(0, len(sorted_count)):
-
-            index = self.alphabet.find(sorted_count[i][0])
-            permutation = permutation[:index] + letterFrequency[i] + permutation[index + 1:]
-
-        print(permutation)
-
     def generate_first_permutation(self) -> str:
         """
         Generates an initial alphabet permutation based on frequency analysis.
